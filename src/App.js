@@ -19,9 +19,14 @@ function App() {
 		setCart([...cart, item]);
 	};
 
+	const removeItem = index => {
+		let newCart = cart.filter((item,idx) => idx != index);
+		setCart(newCart);
+	}
+
 	return (
 		<ProductProvider value={{ products, addItem }}>
-			<CartProvider value={{ cart }}>
+			<CartProvider value={{ cart, removeItem }}>
 				<div className="App">
 					<Navigation/>
 
